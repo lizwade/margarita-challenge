@@ -1,0 +1,24 @@
+[
+{
+    "date": "2024-06-09",
+    "bar": "Dalston Superstore",
+    "rating": "9"
+},
+{
+    "date": "2024-06-06",
+    "bar": "Bargo",
+    "rating": "8"
+},
+{
+    "date": "2024-06-03",
+    "bar": "Pixie's Bar",
+    "rating": "7"
+},
+{
+    "date": "2024-06-01",
+    "bar": "The Bell",
+    "rating": "4"
+}
+
+
+]
