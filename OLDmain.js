@@ -51,3 +51,46 @@ GPS Latitude Ref - North
 GPS Latitude - 50 deg 27' 5.26"
 GPS Longitude Ref - East
 GPS Longitude - 30 deg 30' 45.14"
+
+
+
+export function findBarOfMargaritaNearestInTime(dateString, logbook = margarita_log) {
+    const dateProvided = new Date(dateString);
+
+    let shortestTimeBetween = Infinity;
+    let bar, rating, tiedBar, tiedRating;
+    for (let entry of logbook) {
+        console.log('\n');
+        console.log(`Looking at the entry for ${entry.bar}`);
+        const dateAtThisBar = new Date(entry.date);
+        const timeBetween = Math.abs(dateProvided - dateAtThisBar)/(1000*60*60*24);
+         console.log(`shortestTimeBetween is ${shortestTimeBetween}`);
+        console.log(`this timeBetween is ${timeBetween}`);
+       
+        
+        if (timeBetween === shortestTimeBetween) {
+            console.log(`We have a new equal shortest!`)
+            console.log(`Setting tiedBar to ${entry.bar}`);
+            tiedBar = entry.bar;
+            tiedRating = entry.rating;
+        }
+
+        if (timeBetween < shortestTimeBetween) {
+            console.log(`We have a new shortest!`)
+            console.log(`Setting bar to ${entry.bar}`);
+            shortestTimeBetween = timeBetween;
+            bar = entry.bar;
+            rating = entry.rating;
+        } 
+    }
+    //I would expect this to give the wrong answer for an interim tie, but it doesn't??
+    console.log(`The tied bar is ${tiedBar} with a rating of ${tiedRating}`);
+    if (tiedBar && tiedRating > rating) {
+        console.log(`The tied bar wins!`)
+        return tiedBar;
+    } else {
+        console.log(`Bar ${bar} wins!`);
+        return bar;
+    }
+}
+   
