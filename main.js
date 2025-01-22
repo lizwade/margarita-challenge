@@ -1,7 +1,7 @@
 import margarita_log from "./margarita_log.json" with {type: json} 
 
 /**
- * 
+ *
  * I love a margarita, and for some years now I've been rating the various specimens I've sampled in different bars.
  * 
  * Life's too short for bad margaritas, so I'd like some help remembering where the good ones came from.
@@ -16,5 +16,12 @@ import margarita_log from "./margarita_log.json" with {type: json}
  */
 
 export function barOneHasBetterMargaritasThanBarTwo(bar1, bar2, logbook = margarita_log) {
-    // start shaking!! 
+    
+    const barOneVisit = logbook.filter(entry => entry.bar === bar1);
+    const barOneRating = barOneVisit[0].rating; 
+
+    const barTwoVisit = logbook.filter(entry => entry.bar === bar2);
+    const barTwoRating = barTwoVisit[0].rating; 
+    
+    return barOneRating > barTwoRating;
  }
